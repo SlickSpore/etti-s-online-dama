@@ -19,6 +19,8 @@ class Dama(QMainWindow):
         grid_layout = QGridLayout()
 
         menubar = QMenuBar()
+        menubar.addAction("View")
+        grid_layout.addWidget(menubar)
 
         self.setGeometry(0,0,800,800)
         self.setWindowTitle("etti®'s online dama")
