@@ -5,13 +5,12 @@ from PyQt5.QtWidgets import QPushButton, QGridLayout, QMainWindow, QApplication,
 import sys
 
 
-# CONSTANTS
+# Color CONSTANTS
 CLR_MODE = 0                # color theme
 LIGHT_BROWN = "#ebd586"     # standard Light Color
 DARK_BROWN = "#4d3b2d"      # standard Dark Color
 HC_YELLOW = "#ffff00"       # High Contrast Light Color
 HC_BLACK = "#000000"        # High Contrast Dark Color
-
 PLAYERS_COLORS = [
     "",
     "#ebd586",
@@ -19,17 +18,18 @@ PLAYERS_COLORS = [
     "#ff0000",
     "#00ff00"
 ]
-
 DARK = DARK_BROWN
 LIGHT = LIGHT_BROWN
-FONT_SZ = 50
+
+
 W = 800
 H = 800
+FONT_SZ = 50
 ZOOM_FACTOR = 0
 
 # GLOBALS
 BUTTONS: list[QPushButton] = []
-PIECES_POSITIONS = []
+PIECES_POSITIONS = bytearray(64)
 
 # trigger function for each CheckerBoard Button
 def squareClicked(x, y):
@@ -45,9 +45,6 @@ def place_board(
     ):
     global BUTTONS, PIECES_POSITIONS
 
-    for i in range(0, 64):
-        PIECES_POSITIONS.append(0)
-
     index = 0
     for i in range(1, 9):
         for j in range(1, 9):
@@ -62,7 +59,6 @@ def place_board(
             BUTTONS[index].setMaximumWidth(maximum_width)
             BUTTONS[index].setMaximumHeight(maximum_height)
             index += 1
-
 
 class Dama(QMainWindow):
     def __init__(self):
